@@ -128,20 +128,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void requestEnableGps() async {
     if (gpsEnabled) {
-      log("zaten açık");
+      log("Already open");
     } else {
       bool isGpsActive = await location.requestService();
       if (!isGpsActive) {
         setState(() {
           gpsEnabled = false;
         });
-        log("kullanıcı gps i açmadı");
+        log("User did not turn on GPS");
       } else {
-        log("kullanıcı izin verdi ve açtı");
+        log("gave permission to the user and opened it");
         setState(() {
           gpsEnabled = true;
         });
-        // checkGpsStatus();
       }
     }
   }
@@ -212,3 +211,6 @@ class _HomeScreenState extends State<HomeScreen> {
     clearLocation();
   }
 }
+
+
+     // locations.insert(0, data); Listenin en başına ekler.
